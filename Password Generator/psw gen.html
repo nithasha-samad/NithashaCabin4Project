@@ -1,0 +1,70 @@
+<html> 
+  
+<head> 
+    <title> 
+        Generate random password
+    </title> 
+    <style>
+      body{
+        background-image: url('img3.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: 100% 100%;
+      }
+    </style>
+</head> 
+  
+<body style="text-align:center;"
+      id="body"> 
+    <h1 style="color:white;">   
+            Random Password Generator   
+        </h1> 
+    <p id="tbk_UP" 
+       style="font-size: 19px; 
+              font-weight: bold; color: grey"> 
+    </p> 
+    <div style="color: white;">
+    <input type="checkbox" id="v1" value="num"> Must include numbers<br>
+    <input type="checkbox" id="v2" value="sym"> Must include symbols<br><br></div>
+    <p style="color: #eee">Password Length (minimum 8):</p>
+    <input type="number" id="size" min="8" max="50">
+    <button onClick="tbk_Fun()"> 
+        click here 
+    </button> 
+    <p id="tbk_DOWN" 
+       style="color: blue;  
+              font-size: 24px;  
+              font-weight: bold;"> 
+    </p>
+    <script>  
+        var check1 = document.getElementById("v1");
+        var check2 = document.getElementById("v2"); 
+        var up = document.getElementById('tbk_UP'); 
+        var down = document.getElementById('tbk_DOWN'); 
+        
+        up.innerHTML =  
+          'Click on the button to generate alpha-numeric string';
+        function randomStr(len, arr) { 
+            var ans = ''; 
+            for (var i = len; i > 0; i--) { 
+                ans +=  
+                  arr[Math.floor(Math.random() * arr.length)]; 
+            } 
+            return ans; 
+        } 
+  
+        function tbk_Fun() { 
+            var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (check1.checked == true){
+              str+='1234567890';
+            }
+            if (check2.checked == true){
+              str+='!@#$%^&*()_+';
+            }
+            var x= document.getElementById('size').value;
+            down.innerHTML = randomStr(x, str);
+        } 
+    </script> 
+</body> 
+  
+</html> 
